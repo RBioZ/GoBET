@@ -7,7 +7,7 @@ export default class index extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Header title="Bilhetes"/>
+        <Header title="Live"/>
       </SafeAreaView>
     )
   }

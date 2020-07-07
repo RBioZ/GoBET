@@ -7,24 +7,42 @@ import
   StyleSheet,
   TouchableOpacity,
   TextInput,
-  StatusBar
 } from 'react-native';
 
 import splash from '../../../assets/splash.png';
 
 export default class Login extends Component {
+
+  state={
+    email:'',
+    password:'',
+    isAuth:true
+  }
+
   render() {
+
+    if(this.state.isAuth === true){
+      this.props.navigation.navigate('App')
+    }
+
     return (
       <ImageBackground source={splash} style={styles.container}>
         <View style={styles.login_container}>
           <Text style={styles.title}>Login</Text>
-          <TextInput placeholder="Email" style={styles.input} keyboardType={'email-address'}/>
-          <TextInput placeholder="Senha" style={styles.input} secureTextEntry={true}/>
+          <TextInput 
+            onChangeText={email => this.setState({email}) } 
+            placeholder="Email" 
+            style={styles.input} 
+            keyboardType={'email-address'}/>
+          <TextInput 
+            onChangeText={password => this.setState({password})} 
+            placeholder="Senha" style={styles.input} 
+            secureTextEntry={true}/>
           <TouchableOpacity style={styles.button_link}>
             <Text style={styles.text_link}>Não tem conta? Cadastre-se</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity activeOpacity={0.7} style={styles.button} onPress={() => this.props.navigation.navigate('Home')}>
+        <TouchableOpacity activeOpacity={0.7} style={styles.button} onPress={() => this.props.navigation.navigate('App')}>
           <Text style={styles.button_text}>Entrar</Text>
         </TouchableOpacity>
       </ImageBackground>
