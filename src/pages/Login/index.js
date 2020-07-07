@@ -5,19 +5,17 @@ import
   View,
   ImageBackground,
   StyleSheet,
-  Image,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  StatusBar
 } from 'react-native';
 
-import splash from '../../assets/splash.png';
-import logo from '../../assets/logo.png'
+import splash from '../../../assets/splash.png';
 
 export default class Login extends Component {
   render() {
     return (
       <ImageBackground source={splash} style={styles.container}>
-        <Image source={logo} style={{marginBottom:20}} /> 
         <View style={styles.login_container}>
           <Text style={styles.title}>Login</Text>
           <TextInput placeholder="Email" style={styles.input} keyboardType={'email-address'}/>
@@ -26,7 +24,7 @@ export default class Login extends Component {
             <Text style={styles.text_link}>Não tem conta? Cadastre-se</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity activeOpacity={0.7} style={styles.button}>
+        <TouchableOpacity activeOpacity={0.7} style={styles.button} onPress={() => this.props.navigation.navigate('Home')}>
           <Text style={styles.button_text}>Entrar</Text>
         </TouchableOpacity>
       </ImageBackground>
@@ -42,7 +40,7 @@ const styles = StyleSheet.create({
   },
   login_container:{
     width:'95%',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,0.7)',
     alignItems:'center',
     paddingVertical:10,
     borderRadius:5
@@ -59,14 +57,16 @@ const styles = StyleSheet.create({
   input:{
     width:'95%',
     height:50,
-    backgroundColor:'#FFF',
-    borderRadius:5,
+    color:'#FFF',
     marginVertical:10,
+    borderBottomWidth:1,
+    borderBottomColor:'#F0F0F0',
+    fontSize:16
   },
   title:{
     color:'#FFF',
     fontWeight:'bold',
-    fontSize:18
+    fontSize:18,
   },
   button_text:{
     color:'#FFF',
@@ -79,5 +79,11 @@ const styles = StyleSheet.create({
     color:'#FFF',
     textDecorationLine: 'underline',
     marginVertical:10
+  },
+  logo:{
+    width:80,
+    height:80,
+    marginBottom:20,
+    zIndex:5,
   }
 })
